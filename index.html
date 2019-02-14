@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Target Demo</title>
+</head>
+<body>
+    <style>
+        *,*::before,*::after{
+            margin:0;
+            padding: 0;
+            box-sizing:border-box;
+        }
+        a{
+            text-decoration: none;
+            color: #fff;
+        }
+        main{
+            position: relative;
+        }
+        section {
+            color: #fff;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            z-index: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(90deg);
+            transform-origin: 0 0;
+            transition: transform 1s, opacity 0.8s;
+        }
+        section:target {
+            transform: rotate(0deg);
+            z-index: 1;
+        }
+        section:target ~ section {
+            opacity: 0;
+            transform: rotate(-90deg);
+        }
+        #slide1{
+            background-color: #0089A7;
+        }
+        #slide2{
+            background-color: #DB4D6D;
+        }
+        #slide3{
+            background-color: #B19693;
+        }
+        #slide4{
+            background-color: #78C2C4;
+        }
+        section h1{
+            margin-bottom: 50px;
+        }
+        section .direction a{
+            border: 1px solid white;
+            padding: 4px 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #999;
+        }
+        section .direction a:hover{
+            color:#333;
+        }
+    </style>
+    <main>
+        <section id="slide1">
+            <h1>PAGE1</h1>
+            <div class="direction">
+                <span><a href="#slide2">Next</a> </span>
+            </div>
+        </section>  
+        <section id="slide2">
+            <h1>PAGE2</h1>
+            <div class="direction">
+                <span><a href="#slide1">Prev</a> </span>
+                <span><a href="#slide3">Next</a> </span>
+            </div>
+        </section>
+        <section id="slide3">
+            <h1>PAGE3</h1>
+            <div class="direction">
+                <span><a href="#slide2">Prev</a> </span>
+                <span><a href="#slide4">Next</a> </span>
+            </div>
+        </section>
+        <section id="slide4">
+            <h1>PAGE4</h1>
+            <div class="direction">
+                <span><a href="#slide3">Prev</a> </span>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
